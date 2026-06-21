@@ -19,6 +19,11 @@ from slack_glue import Database, Router, load_fixture
 # wrapped/truncated under CI's narrow non-TTY width (which hides option flags
 # from the help tests). Set at import time, before any CLI is imported/invoked.
 os.environ["COLUMNS"] = "200"
+# Disable ANSI color so Rich does not split option names (e.g. "--fps")
+# across styled spans, which CI's forced color would otherwise do.
+os.environ["TERM"] = "dumb"
+os.environ["NO_COLOR"] = "1"
+os.environ.pop("FORCE_COLOR", None)
 
 
 @pytest.fixture
