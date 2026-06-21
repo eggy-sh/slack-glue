@@ -6,13 +6,20 @@ between deterministic code and the single model call.
 
 ## Development setup
 
+`slack-glue` depends on the sibling `replykit` engine, which is not yet on PyPI.
+For local development, install it editable from its checkout next to this repo,
+then install `slack-glue` with the `dev` extra:
+
 ```bash
 uv venv
+uv pip install -e ../replykit      # editable sibling engine (not yet on PyPI)
 uv pip install -e '.[dev]'
 ```
 
 The `dev` extra includes the Typer/Rich CLI dependencies, so the CLI and its
-tests run out of the box. `replykit` is pulled in as a normal dependency.
+tests run out of the box. CI installs `replykit` from git
+(`git+https://github.com/edgarh92/replykit@main`) instead of the editable
+sibling; both satisfy the `replykit>=0.1.0` pin in `pyproject.toml`.
 
 ## The one rule: AI only at the genuine judgment boundary
 

@@ -29,21 +29,6 @@ jobs:
       - name: Check out slack-glue
         uses: actions/checkout@v4
 
-      # slack-glue depends on the sibling replykit engine, which is not published
-      # to PyPI for this portfolio. Check it out alongside and install it editable
-      # so CI builds against the exact engine source the tests exercise locally.
-      # (For a published release, drop this step and let the pyproject pin resolve
-      # replykit from PyPI.)
-      - name: Check out replykit (sibling engine)
-        uses: actions/checkout@v4
-        with:
-          repository: eggy-sh/replykit
-          path: .replykit
-          fetch-depth: 1
-          # Don't fail the whole job if the repo isn't reachable; the install step
-          # reports a clear message instead of a cryptic resolver error.
-        continue-on-error: true
-
       - name: Install uv
         uses: astral-sh/setup-uv@v5
         with:
@@ -52,15 +37,15 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         run: uv python install ${{ matrix.python-version }}
 
-      - name: Create venv and install slack-glue + replykit
+      # slack-glue depends on the sibling replykit engine, which is not yet
+      # published to PyPI for this portfolio. CI installs it directly from its
+      # git repo so the build resolves against the real engine source. Local /
+      # dev installs the editable sibling checkout instead (see CONTRIBUTING.md);
+      # both paths satisfy the `replykit>=0.1.0` pin in pyproject.toml.
+      - name: Create venv and install replykit (from git) + slack-glue
         run: |
           uv venv --python ${{ matrix.python-version }}
-          if [ -f .replykit/pyproject.toml ]; then
-            echo "Installing replykit from the checked-out sibling repo."
-            uv pip install -e .replykit
-          else
-            echo "::warning::replykit checkout unavailable; relying on the package index."
-          fi
+          uv pip install "replykit @ git+https://github.com/edgarh92/replykit@main"
           uv pip install -e '.[dev]'
 
       - name: Ruff lint
