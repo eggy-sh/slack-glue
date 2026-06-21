@@ -49,26 +49,26 @@ jobs:
           uv pip install -e '.[dev]'
 
       - name: Ruff lint
-        run: uv run ruff check .
+        run: .venv/bin/ruff check .
 
       - name: Ruff format check
-        run: uv run ruff format --check .
+        run: .venv/bin/ruff format --check .
 
       - name: Pytest with coverage
-        run: uv run pytest --cov=slack_glue --cov-report=term-missing
+        run: .venv/bin/pytest --cov=slack_glue --cov-report=term-missing
 
       - name: Smoke-run the examples (hermetic, no API key)
         run: |
-          uv run python examples/ask_hermetic.py
-          uv run python examples/slack_event.py
+          .venv/bin/python examples/ask_hermetic.py
+          .venv/bin/python examples/slack_event.py
 
       - name: Smoke-run the CLI (hermetic, --json contract)
         run: |
           # ask: route + execute a scripted request, assert a single JSON object.
-          uv run slack-glue ask "approved vfx shots reel 3 greenscreen" \
+          .venv/bin/slack-glue ask "approved vfx shots reel 3 greenscreen" \
             --model scripted \
             -s $'@reply name=emit_query\nendpoint = /api/v1/shots\nstatus = approved\nreel = 3\ndept = vfx\ntags = greenscreen\n@end' \
-            --json | uv run python -c "import sys, json; o = json.load(sys.stdin); assert o['ok'] and o['result']['count'] == 2, o"
+            --json | .venv/bin/python -c "import sys, json; o = json.load(sys.stdin); assert o['ok'] and o['result']['count'] == 2, o"
           # serve --check: run a sample app_mention through the offline pipeline.
-          uv run slack-glue serve --check --json \
-            | uv run python -c "import sys, json; o = json.load(sys.stdin); assert o['check']['reply']['kind'] == 'results', o"
+          .venv/bin/slack-glue serve --check --json \
+            | .venv/bin/python -c "import sys, json; o = json.load(sys.stdin); assert o['check']['reply']['kind'] == 'results', o"
