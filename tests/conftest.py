@@ -8,10 +8,17 @@ the suite stays fully offline and reproducible.
 
 from __future__ import annotations
 
+import os
+
 import pytest
 from replykit import ScriptedModel
 
 from slack_glue import Database, Router, load_fixture
+
+# Pin a wide terminal width so Rich-rendered CLI "--help" output is never
+# wrapped/truncated under CI's narrow non-TTY width (which hides option flags
+# from the help tests). Set at import time, before any CLI is imported/invoked.
+os.environ["COLUMNS"] = "200"
 
 
 @pytest.fixture
