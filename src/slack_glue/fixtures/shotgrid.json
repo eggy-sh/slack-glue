@@ -1,0 +1,128 @@
+{
+  "shot": [
+    {
+      "id": "SHOT-0101",
+      "status": "approved",
+      "reel": 3,
+      "dept": "vfx",
+      "sequence": "RDR",
+      "tags": ["greenscreen", "hero"]
+    },
+    {
+      "id": "SHOT-0102",
+      "status": "approved",
+      "reel": 3,
+      "dept": "vfx",
+      "sequence": "RDR",
+      "tags": ["greenscreen", "crowd"]
+    },
+    {
+      "id": "SHOT-0103",
+      "status": "in_progress",
+      "reel": 3,
+      "dept": "comp",
+      "sequence": "RDR",
+      "tags": ["greenscreen"]
+    },
+    {
+      "id": "SHOT-0104",
+      "status": "approved",
+      "reel": 3,
+      "dept": "vfx",
+      "sequence": "RDR",
+      "tags": ["fullcg", "hero"]
+    },
+    {
+      "id": "SHOT-0201",
+      "status": "approved",
+      "reel": 2,
+      "dept": "vfx",
+      "sequence": "ALY",
+      "tags": ["greenscreen"]
+    },
+    {
+      "id": "SHOT-0202",
+      "status": "final",
+      "reel": 2,
+      "dept": "lighting",
+      "sequence": "ALY",
+      "tags": ["fullcg"]
+    },
+    {
+      "id": "SHOT-0203",
+      "status": "omit",
+      "reel": 2,
+      "dept": "vfx",
+      "sequence": "ALY",
+      "tags": ["greenscreen", "deleted"]
+    },
+    {
+      "id": "SHOT-0301",
+      "status": "pending",
+      "reel": 1,
+      "dept": "anim",
+      "sequence": "INT",
+      "tags": ["creature"]
+    },
+    {
+      "id": "SHOT-0302",
+      "status": "in_progress",
+      "reel": 1,
+      "dept": "layout",
+      "sequence": "INT",
+      "tags": ["bluescreen"]
+    },
+    {
+      "id": "SHOT-0303",
+      "status": "approved",
+      "reel": 1,
+      "dept": "comp",
+      "sequence": "INT",
+      "tags": ["greenscreen", "matte"]
+    }
+  ],
+  "asset": [
+    {
+      "id": "AST-HERO-01",
+      "status": "approved",
+      "asset_type": "character",
+      "dept": "anim",
+      "tags": ["hero", "rigged"]
+    },
+    {
+      "id": "AST-HERO-02",
+      "status": "final",
+      "asset_type": "character",
+      "dept": "vfx",
+      "tags": ["hero", "creature"]
+    },
+    {
+      "id": "AST-PROP-01",
+      "status": "approved",
+      "asset_type": "prop",
+      "dept": "vfx",
+      "tags": ["hero"]
+    },
+    {
+      "id": "AST-PROP-02",
+      "status": "in_progress",
+      "asset_type": "prop",
+      "dept": "comp",
+      "tags": ["background"]
+    },
+    {
+      "id": "AST-ENV-01",
+      "status": "approved",
+      "asset_type": "environment",
+      "dept": "lighting",
+      "tags": ["matte", "fullcg"]
+    },
+    {
+      "id": "AST-FX-01",
+      "status": "pending",
+      "asset_type": "fx",
+      "dept": "vfx",
+      "tags": ["simulation", "creature"]
+    }
+  ]
+}
