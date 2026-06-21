@@ -18,7 +18,7 @@ uv pip install -e '.[dev]'
 
 The `dev` extra includes the Typer/Rich CLI dependencies, so the CLI and its
 tests run out of the box. CI installs `replykit` from git
-(`git+https://github.com/edgarh92/replykit@main`) instead of the editable
+(`git+https://github.com/eggy-sh/replykit@main`) instead of the editable
 sibling; both satisfy the `replykit>=0.1.0` pin in `pyproject.toml`.
 
 ## The one rule: AI only at the genuine judgment boundary

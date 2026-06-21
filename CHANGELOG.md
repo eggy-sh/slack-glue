@@ -62,6 +62,6 @@ provider configured (via `replykit`'s `ScriptedModel` / `MockModel`).
   extra and are imported lazily; the core API imports nothing beyond `replykit`.
 - `replykit` is not yet published to PyPI. Local development installs it editable
   from the sibling checkout; CI installs it from
-  `git+https://github.com/edgarh92/replykit@main` (see `CONTRIBUTING.md`).
+  `git+https://github.com/eggy-sh/replykit@main` (see `CONTRIBUTING.md`).
 
 [0.1.0]: https://github.com/eggy-sh/slack-glue/releases/tag/v0.1.0
